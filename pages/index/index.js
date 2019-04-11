@@ -10,5 +10,10 @@ Page({
   },
   onLoad: function() {
 
+  },
+  toAnswer:function(){
+    wx.navigateTo({
+      url: '/pages/answer/index'
+    })
   }
 })

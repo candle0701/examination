@@ -5,9 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
+    date: '2016-09-01',
+    listData: [
+      { "code": "2016-09-01", "text": "2", "type": "点击查看" },
+      { "code": "2016-09-01", "text": "2", "type": "点击查看" },
+      { "code": "2016-09-01", "text": "3", "type": "点击查看" },
+      { "code": "2016-09-01", "text": "4", "type": "点击查看" },
+      { "code": "2016-09-01", "text": "5", "type": "点击查看" },
+      { "code": "2016-09-01", "text": "2", "type": "点击查看" },
+      { "code": "2016-09-01", "text": "1", "type": "点击查看" }
+    ]
 
   },
-
+  todetail:function(){
+    wx.navigateTo({
+      url: '/pages/answer/index'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

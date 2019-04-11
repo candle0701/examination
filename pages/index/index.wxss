@@ -32,14 +32,14 @@
 .ranking_name{
   font-size: 13px;
   font-weight: bold;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 .ranking_introduction{
   font-size:10px;
   color:grey;
   margin:3px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .ranking_no{
   color:red;

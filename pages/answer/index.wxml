@@ -1,0 +1,33 @@
+<view class="question">
+  <view class="question_top">
+    <text class='question_sort'>1</text>
+    <text class='question_content'>小学生每天吃多少冰糕?</text>
+  </view>
+  <view class='question_img' wx-if='{{true}}'>
+    <image mode='widthFix' src='http://img2.imgtn.bdimg.com/it/u=3154322533,1786994993&fm=26&gp=0.jpg' class='ques_img'></image>
+  </view>
+  <view class="question_middle">
+    <radio-group bindchange="radioChange">
+    <view class="choo_area">
+      <radio class="choo_sort" value='1'>A</radio>
+      <text class='choo_content'>小学生每天吃十斤冰糕小学生每天吃十斤冰糕小学生每天吃十斤冰糕</text>
+    </view>
+    <view class="choo_area">
+      <radio class="choo_sort">B</radio>
+      <text class='choo_content'>小学生每天吃三十斤冰糕小学生每天吃三十斤冰糕小学生每天吃三十斤冰糕</text>
+    </view>
+    <view class="choo_area">
+      <radio class="choo_sort">C</radio>
+      <text class='choo_content'>小学生每天吃八十斤冰糕小学生每天吃八十斤冰糕小学生每天吃八十斤冰糕</text>
+    </view>
+    <view class="choo_area">
+      <radio class="choo_sort">D</radio>
+      <text class='choo_content'>小学生每天吃一百斤冰糕小学生每天吃一百斤冰糕小学生每天吃一百斤冰糕</text>
+    </view>
+    </radio-group>
+  </view>
+  <view class='next'>
+    <button type="primary">下一题</button>
+  </view>
+</view>
+

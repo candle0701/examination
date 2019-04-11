@@ -1,8 +1,9 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/mine/index",
     "pages/wrong/index",
-    "pages/mine/index"
+    "pages/answer/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

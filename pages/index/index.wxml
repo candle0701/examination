@@ -25,7 +25,7 @@ duration="{{duration}}">
       </view>
     </view>
     <view class="answer">
-          <text class="answer_view">答题</text>
+          <view class="answer_view" bindtap='toAnswer'>答题</view>
     </view>
   </navigator>
 </block>
