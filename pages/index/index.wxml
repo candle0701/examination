@@ -12,7 +12,7 @@ duration="{{duration}}">
 </swiper>
 
 <block wx:for="{{rankingList}}" wx:key="item.id">
-  <navigator url="" class="ranking_item">
+  <view class="ranking_item">
     <view class="ranking_photo">
       <image class="ranking_img" mode='widthFix' src="{{item.url}}"></image>
     </view>
@@ -27,7 +27,14 @@ duration="{{duration}}">
     <view class="answer">
           <view class="answer_view" bindtap='toAnswer'>答题</view>
     </view>
-  </navigator>
+  </view>
 </block>
+<view class='tui-countdown-content' wx:for="{{countDownList}}" wx:key="countDownList">
+  剩余
+  <text class='tui-conutdown-box'>{{item.day}}</text>天
+  <text class='tui-conutdown-box'>{{item.hou}}</text>时
+  <text class='tui-conutdown-box'>{{item.min}}</text>分
+  <text class='tui-conutdown-box tui-countdown-bg'>{{item.sec}}</text>秒
+</view>
 
 

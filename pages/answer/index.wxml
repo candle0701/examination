@@ -1,6 +1,6 @@
 <view class="question">
   <view class="question_top">
-    <text class='question_sort'>1</text>
+    <!-- <text class='question_sort'>1</text> -->
     <text class='question_content'>小学生每天吃多少冰糕?</text>
   </view>
   <view class='question_img' wx-if='{{true}}'>

@@ -19,7 +19,7 @@
 
   <view class='grayLine1'></view>
 
-  <view class='personalInformation' bindtap='questionBack'>
+  <view class='personalInformation' bindtap='aboutus'>
     <image class='icon'  src='../../images/1-03.png'></image>
     <view class='text'>关于我们</view>
   </view>
