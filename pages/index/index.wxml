@@ -10,26 +10,55 @@ duration="{{duration}}">
     </swiper-item>
   </block>
 </swiper>
-
+<view class="divLine"></view>
+<view class="time">
+  <view class="startArea">
+  <view class="time_start">开始时间</view>
+    <picker
+      mode="date"
+      value="{{startdate}}"
+      start="2015-09-01"
+      end="2017-09-01"
+      bindchange="bindDateChange1"
+    >
+      <view class="picker">
+        {{startdate}}
+      </view>
+    </picker>
+    </view>
+  <view class="endArea">
+  <view class="time_end">结束时间</view>
+    <picker
+      mode="date"
+      value="{{enddate}}"
+      start="2015-09-01"
+      end="2017-09-01"
+      bindchange="bindDateChange2"
+    >
+      <view class="picker">
+        {{enddate}}
+      </view>
+    </picker>
+    </view>
+    <view class="search">过滤</view>
+</view>
+<view class="divLine"></view>
 <block wx:for="{{rankingList}}" wx:key="item.id">
-  <view class="ranking_item">
+  <view class="ranking_item" bindtap='toAnswer'>
     <view class="ranking_photo">
       <image class="ranking_img" mode='widthFix' src="{{item.url}}"></image>
     </view>
     <view class="ranking_text">
-      <text class="ranking_name">{{item.title}}</text>
-      <text class="ranking_introduction">{{item.introduction}}</text>
+      <text class="ranking_grade">{{item.grade}}年级练习</text>
+      <text class="ranking_title">{{item.title}}</text>
       <view>
-        <text class="ranking_no">{{item.sort}} </text>
-        <text class="ranking_price">{{item.price}}</text>
+        <text class="ranking_opendate">{{item.opendate}} </text>
+        <text class="ranking_zone">{{item.zone}}校区</text>
       </view>
-    </view>
-    <view class="answer">
-          <view class="answer_view" bindtap='toAnswer'>答题</view>
     </view>
   </view>
 </block>
-<view class='tui-countdown-content' wx:for="{{countDownList}}" wx:key="countDownList">
+<view class='tui-countdown-content' wx:for="{{countDownList}}" wx:key="countDownList" wx:if="{{false}}">
   剩余
   <text class='tui-conutdown-box'>{{item.day}}</text>天
   <text class='tui-conutdown-box'>{{item.hou}}</text>时

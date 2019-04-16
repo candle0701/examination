@@ -11,7 +11,9 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "爱学习",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "backgroundColor":"#eb2afe",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "color":"#000000",

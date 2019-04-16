@@ -1,33 +1,47 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+<block wx:for="{{choiceList}}" wx:key="{{choiceList}}">
 <view class="question">
   <view class="question_top">
-    <!-- <text class='question_sort'>1</text> -->
-    <text class='question_content'>小学生每天吃多少冰糕?</text>
+    <text class='question_sort'>{{item.choice_sort}}</text>
+    <text class='question_content'>{{item.choice_title}}</text>
   </view>
-  <view class='question_img' wx-if='{{true}}'>
-    <image mode='widthFix' src='http://img2.imgtn.bdimg.com/it/u=3154322533,1786994993&fm=26&gp=0.jpg' class='ques_img'></image>
+  <view class='question_img' wx-if='{{item.choice_image1==""?false:true}}'>
+    <image mode='widthFix' src='{{item.choice_image1}}' class='ques_img'></image>
   </view>
   <view class="question_middle">
-    <radio-group bindchange="radioChange">
+    <radio-group name="{{item.choice_sort}}">
     <view class="choo_area">
-      <radio class="choo_sort" value='1'>A</radio>
-      <text class='choo_content'>小学生每天吃十斤冰糕小学生每天吃十斤冰糕小学生每天吃十斤冰糕</text>
+      <radio class="choo_sort" value='A'>A</radio>
+      <text class='choo_content'>{{item.choice_a}}</text>
+      <image src="http://img3.imgtn.bdimg.com/it/u=2073212123,362606884&fm=200&gp=0.jpg" wx:if="{{item.choice_answer=='A'?true:false}}" class='choo_img' mode='widthFix' />
+      <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2190694592,3659767110&fm=26&gp=0.jpg" wx:if="{{item.choice_answer=='A'?false:true}}" mode='widthFix' class='choo_img' />
     </view>
     <view class="choo_area">
-      <radio class="choo_sort">B</radio>
-      <text class='choo_content'>小学生每天吃三十斤冰糕小学生每天吃三十斤冰糕小学生每天吃三十斤冰糕</text>
+      <radio class="choo_sort" value='B'>B</radio>
+      <text class='choo_content'>{{item.choice_b}}</text>
+      <image src="http://img3.imgtn.bdimg.com/it/u=2073212123,362606884&fm=200&gp=0.jpg" wx:if="{{item.choice_answer=='B'?true:false}}" class='choo_img' mode='widthFix' />
+      <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2190694592,3659767110&fm=26&gp=0.jpg" wx:if="{{item.choice_answer=='B'?false:true}}" mode='widthFix' class='choo_img' />
     </view>
     <view class="choo_area">
-      <radio class="choo_sort">C</radio>
-      <text class='choo_content'>小学生每天吃八十斤冰糕小学生每天吃八十斤冰糕小学生每天吃八十斤冰糕</text>
+      <radio class="choo_sort" value='C'>C</radio>
+      <text class='choo_content'>{{item.choice_c}}</text>
+      <image src="http://img3.imgtn.bdimg.com/it/u=2073212123,362606884&fm=200&gp=0.jpg" wx:if="{{item.choice_answer=='C'?true:false}}" class='choo_img' mode='widthFix' />
+      <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2190694592,3659767110&fm=26&gp=0.jpg" wx:if="{{item.choice_answer=='C'?false:true}}" mode='widthFix' class='choo_img' />
     </view>
     <view class="choo_area">
-      <radio class="choo_sort">D</radio>
-      <text class='choo_content'>小学生每天吃一百斤冰糕小学生每天吃一百斤冰糕小学生每天吃一百斤冰糕</text>
+      <radio class="choo_sort" value='D'>D</radio>
+      <text class='choo_content'>{{item.choice_d}}</text>
+      <image src="http://img3.imgtn.bdimg.com/it/u=2073212123,362606884&fm=200&gp=0.jpg" wx:if="{{item.choice_answer=='D'?true:false}}" mode='widthFix' class='choo_img' />
+      <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2190694592,3659767110&fm=26&gp=0.jpg" wx:if="{{item.choice_answer=='D'?false:true}}" mode='widthFix' class='choo_img' />
     </view>
     </radio-group>
   </view>
-  <view class='next'>
-    <button type="primary">下一题</button>
-  </view>
+  
 </view>
+</block>
+<view class='next'>
+  <button form-type="submit">提交</button>
+  <button form-type="reset">重置</button>
+</view>
+</form>
 

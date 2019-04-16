@@ -1,10 +1,10 @@
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="name_area">
-    <view class="name_title">姓名</view>
+    <view class="name_title">姓名:</view>
     <input class="name_input" name="nickname" placeholder="请输入姓名" />
   </view>
   <view class="sex_area">
-    <view class="sex_title">性别</view>
+    <view class="sex_title">性别:</view>
     <radio-group name="radio-group" class="sex_content">
       <label>
         <radio value="1" />
@@ -17,7 +17,7 @@
     </radio-group>
   </view>
   <view class="city_area">
-    <view class="city__title">省市区</view>
+    <view class="city__title">省市区:</view>
     <picker
       mode="region"
       bindchange="bindRegionChange"
@@ -29,15 +29,15 @@
     </picker>
   </view>
   <view class="name_area">
-    <view class="name_title">街道</view>
+    <view class="name_title">街道:</view>
     <input class="name_input" name="area" placeholder="请输入详细地址" />
   </view>
   <view class="name_area">
-    <view class="name_title">电话</view>
+    <view class="name_title">电话:</view>
     <input class="name_input" type="number" maxlength="11" name="telephone" placeholder="请输入手机号" />
   </view>
   <view class="city_area">
-    <view class="city__title">年龄</view>
+    <view class="city__title">年龄:</view>
     <picker
       bindchange="bindAgeChange"
       value="{{ageIndex}}"
@@ -49,7 +49,7 @@
     </picker>
   </view>
   <view class="city_area">
-    <view class="city__title">年级</view>
+    <view class="city__title">年级:</view>
     <picker
       bindchange="bindGradeChange"
       value="{{gradeIndex}}"
