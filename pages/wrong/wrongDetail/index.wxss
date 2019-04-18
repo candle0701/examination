@@ -24,6 +24,12 @@
   font-size:40rpx;
   color:rgb(51, 37, 37);
 }
+.question_answer{
+  margin-left:20rpx; 
+  font-weight: bold;
+  font-size:40rpx;
+  color:rgb(27, 156, 23);
+}
 .question_middle{
   padding:10rpx;
 }
@@ -50,8 +56,4 @@
 }
 .next{
   padding-bottom:50rpx;
-}
-.nothing{
-  font-size: 45rpx;
-  margin: 30rpx 30rpx 30rpx 30rpx;
 }

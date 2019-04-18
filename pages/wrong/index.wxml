@@ -3,8 +3,6 @@
   <picker
     mode="date"
     value="{{date}}"
-    start="2015-09-01"
-    end="2017-09-01"
     bindchange="bindDateChange"
   >
     <view class="picker">
@@ -15,19 +13,19 @@
 <view class="table">
   <view class="tr bg-w">
     <view class="th">时间</view>
-    <view class="th">数量</view>
-    <view class="th ">操作</view>
+    <view class="th">错题数量</view>
+    <view class="th">操作</view>
   </view>
-  <block wx:for="{{listData}}" wx:key="{{code}}">
+  <block wx:for="{{listData}}" wx:key="listData" >
     <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-      <view class="td">{{item.code}}</view>
-      <view class="td">{{item.text}}</view>
-      <view class="td" bindtap='todetail'>{{item.type}}</view>
+      <view class="td">{{item.examtime}}</view>
+      <view class="td">{{item.wrongsum}}</view>
+      <view class="td" bindtap='todetail' data-bankId="{{item.bankId}}" data-userId="{{item.userId}}">点击查看</view>
     </view>
     <view class="tr" wx:else>
-      <view class="td">{{item.code}}</view>
-      <view class="td">{{item.text}}</view>
-      <view class="td" bindtap='todetail'>{{item.type}}</view>
+      <view class="td">{{item.examtime}}</view>
+      <view class="td">{{item.wrongsum}}</view>
+      <view class="td" bindtap='todetail' data-bankId="{{item.bankId}}" data-userId="{{item.userId}}">点击查看</view>
     </view>
   </block>
 </view>

@@ -17,8 +17,6 @@ duration="{{duration}}">
     <picker
       mode="date"
       value="{{startdate}}"
-      start="2015-09-01"
-      end="2017-09-01"
       bindchange="bindDateChange1"
     >
       <view class="picker">
@@ -31,8 +29,6 @@ duration="{{duration}}">
     <picker
       mode="date"
       value="{{enddate}}"
-      start="2015-09-01"
-      end="2017-09-01"
       bindchange="bindDateChange2"
     >
       <view class="picker">
@@ -40,11 +36,11 @@ duration="{{duration}}">
       </view>
     </picker>
     </view>
-    <view class="search">过滤</view>
+    <button class="search" bindtap='searchByTime' >过滤</button>
 </view>
 <view class="divLine"></view>
-<block wx:for="{{rankingList}}" wx:key="item.id">
-  <view class="ranking_item" bindtap='toAnswer'>
+<view  wx-if="{{listArea}}">
+  <view class="ranking_item" wx:for="{{rankingList}}" wx:key="rankingList" bindtap='toAnswer' data-examTime='{{item.opendate}}' data-grade='{{item.grade}}' data-id='{{item.id}}' data-ifDone='{{item.ifDone}}'>
     <view class="ranking_photo">
       <image class="ranking_img" mode='widthFix' src="{{item.url}}"></image>
     </view>
@@ -56,14 +52,13 @@ duration="{{duration}}">
         <text class="ranking_zone">{{item.zone}}校区</text>
       </view>
     </view>
+    <view class="ifdone">
+      <text class="{{item.ifDone=='true'?'yes':'no'}}" >{{item.ifDone=='true'?"已做":"未做"}}</text>
+    </view>
   </view>
-</block>
-<view class='tui-countdown-content' wx:for="{{countDownList}}" wx:key="countDownList" wx:if="{{false}}">
-  剩余
-  <text class='tui-conutdown-box'>{{item.day}}</text>天
-  <text class='tui-conutdown-box'>{{item.hou}}</text>时
-  <text class='tui-conutdown-box'>{{item.min}}</text>分
-  <text class='tui-conutdown-box tui-countdown-bg'>{{item.sec}}</text>秒
+</view>
+<view wx:if="{{nothingArea}}" class="nothingArea">
+  <text class="nothingArea_text">没有数据...</text>
 </view>
 
 

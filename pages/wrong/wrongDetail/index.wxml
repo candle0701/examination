@@ -1,41 +1,40 @@
-<form bindsubmit="formSubmit" bindreset="formReset" wx:if="{{exist}}">
-<block wx:for="{{choiceList}}" wx:key="{{choiceList}}">
+<form bindsubmit="formSubmit" bindreset="formReset">
+<block wx:for="{{choiceList}}" wx:key="choiceList">
 <view class="question">
   <view class="question_top">
     <text class='question_sort'>{{index+1}}</text>
     <text class='question_content'>{{item.choiceTitle}}</text>
+    <text class='question_answer'>{{item.choiceAnswer}}</text>
   </view>
   <view class='question_img' wx-if='{{item.choiceImgUrl1==null?false:true}}'>
     <image mode='widthFix' src='{{item.choiceImgUrl1}}' class='ques_img'></image>
   </view>
   <view class="question_middle">
-    <radio-group name="{{item.id}}">
+    <radio-group>
     <view class="choo_area">
       <radio class="choo_sort" value='A' disabled="{{item.id==null?true:false}}" checked='{{item.answer=="A"?true:false}}'>A</radio>
       <text class='choo_content'>{{item.choiceA}}</text>
+      <image src="{{item.choiceAnswer==item.answer?rightimg:wrongimg}}"  class='choo_img' mode='widthFix' wx:if='{{item.answer=="A"?true:false}}' />
     </view>
     <view class="choo_area">
       <radio class="choo_sort" value='B' disabled="{{item.id==null?true:false}}" checked='{{item.answer=="B"?true:false}}'>B</radio>
       <text class='choo_content'>{{item.choiceB}}</text>
+      <image src="{{item.choiceAnswer==item.answer?rightimg:wrongimg}}"  class='choo_img' mode='widthFix' wx:if='{{item.answer=="B"?true:false}}' />
     </view>
     <view class="choo_area">
       <radio class="choo_sort" value='C' disabled="{{item.id==null?true:false}}" checked='{{item.answer=="C"?true:false}}'>C</radio>
       <text class='choo_content'>{{item.choiceC}}</text>
+      <image src="{{item.choiceAnswer==item.answer?rightimg:wrongimg}}"  class='choo_img' mode='widthFix' wx:if='{{item.answer=="C"?true:false}}' />
     </view>
     <view class="choo_area">
       <radio class="choo_sort" value='D' disabled="{{item.id==null?true:false}}" checked='{{item.answer=="D"?true:false}}'>D</radio>
       <text class='choo_content'>{{item.choiceD}}</text>
+      <image src="{{item.choiceAnswer==item.answer?rightimg:wrongimg}}"  class='choo_img' mode='widthFix' wx:if='{{item.answer=="D"?true:false}}' />
     </view>
     </radio-group>
   </view>
+  
 </view>
 </block>
-<view class='next' wx-if="{{ifdone}}">
-  <button form-type="submit">提交</button>
-  <button form-type="reset">重置</button>
-</view>
 </form>
-<view class="nothing" wx:if="{{nothing}}">
-  当前试题正在创建中...
-</view>
 
