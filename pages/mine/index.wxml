@@ -1,14 +1,8 @@
 <view class="page">
   <view class='headName'>
     <image class='head' src='../../img/wx.png'></image>
-    <view class='name'>春光</view>
+    <view class='name'>{{nickname}}</view>
   </view>
-
-<!-- 
-  <view class='testHistory' bindtap='testHistory'>
-    <image class='icon' src='../../images/1-01.png'></image>
-    <view class='text'>排行榜</view>
-  </view> -->
 
   <view class='grayLine1'></view>
 

@@ -1,3 +1,4 @@
+const url = require('../../../utils/base.js').url
 // pages/answer/index.js
 Page({
 
@@ -17,7 +18,7 @@ Page({
   onLoad: function (options) {
     let that = this;
       wx.request({
-        url: 'http://localhost:8088/choice/getDoneAnswer',
+        url: url+'/choice/getDoneAnswer',
         data: {
           bankId: options.bankId,
           userId: options.userId

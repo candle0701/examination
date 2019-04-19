@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js')
+const url = require('../../utils/base.js').url
 
 Page({
   data: {
@@ -30,11 +31,15 @@ Page({
   },
   searchByTime: function(){
     let that = this;
-    that.selectByDate(that.startdate, that.enddate);
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        that.selectByDate(that.startdate, that.enddate, res.data.id);
+      },
+    })
   },
   onLoad: function() {
     var TIME = util.formatDate(new Date());
-
     this.setData({
       startdate: TIME,
       enddate: TIME
@@ -44,7 +49,12 @@ Page({
     this.enddate = TIME;
 
     let that = this;
-    that.selectByDate('','');
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        that.selectByDate('', '', res.data.id);
+      },
+    })
   },
   onShow:function(){
     var TIME = util.formatDate(new Date());
@@ -53,15 +63,19 @@ Page({
       startdate: TIME,
       enddate: TIME
     });
-
+    
     this.startdate = TIME;
     this.enddate = TIME;
 
     let that = this;
-    that.selectByDate('', '');
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        that.selectByDate('', '', res.data.id);
+      },
+    })
   },
-  selectByDate:function(startdate,enddate){
-
+  selectByDate: function (startdate, enddate, userId){
     if(startdate > enddate){
       wx.showModal({
         content: '开始时间必须小于结束时间！'
@@ -71,11 +85,11 @@ Page({
 
     let that = this
     wx.request({
-      url: 'http://localhost:8088/bank/selectByDate',
+      url: url+'/bank/selectByDate',
       data: {
         begin: startdate,
         end: enddate,
-        userId:"001"
+        userId: userId
       },
       header: {
         'content-type': 'application/json' // 默认值

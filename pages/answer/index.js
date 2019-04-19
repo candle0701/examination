@@ -1,4 +1,5 @@
-// pages/answer/index.js
+const url = require('../../utils/base.js').url
+
 Page({
 
   /**
@@ -19,79 +20,93 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    let userId = ''
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        userId = res.data.id
+        if (options.ifdone == 'true') {
+          wx.request({
+            url: url + '/choice/getDoneAnswer',
+            data: {
+              bankId: options.bankid,
+              userId: userId
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+              if (res.data.length > 0) {
+                that.setData({
+                  choiceList: res.data,
+                  nothing: false,
+                  exist: true,
+                  ifdone: false
+                })
+              } else {
+                that.setData({
+                  choiceList: res.data,
+                  nothing: true,
+                  exist: false
+                })
+              }
+            }
+          })
+        } else {
+          wx.request({
+            url: url + '/choice/selectByDateAndGrade',
+            data: {
+              examTime: options.examtime,
+              grade: options.grade
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+              that.ifdone = true
+              if (res.data.length > 0) {
+                that.setData({
+                  choiceList: res.data,
+                  nothing: false,
+                  exist: true,
+                  ifdone: true
+                })
+              } else {
+                that.setData({
+                  choiceList: res.data,
+                  nothing: true,
+                  exist: false
+                })
+              }
+            }
+          })
+        }
+      },
+    })
     that.examTime = options.examtime;
     that.bankId = options.bankid;
     that.setData({
       ifdone:options.ifdone
     })
-    if (options.ifdone=='true'){
-      wx.request({
-        url: 'http://localhost:8088/choice/getDoneAnswer',
-        data: {
-          bankId: options.bankid,
-          userId: '001'
-        },
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success(res) {
-          if (res.data.length > 0) {
-            that.setData({
-              choiceList: res.data,
-              nothing: false,
-              exist: true,
-              ifdone:false
-            })
-          } else {
-            that.setData({
-              choiceList: res.data,
-              nothing: true,
-              exist: false
-            })
-          }
-        }
-      })
-    }else{
-      wx.request({
-        url: 'http://localhost:8088/choice/selectByDateAndGrade',
-        data: {
-          examTime: options.examtime,
-          grade: options.grade
-        },
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success(res) {
-          that.ifdone=true
-          if (res.data.length > 0) {
-            that.setData({
-              choiceList: res.data,
-              nothing: false,
-              exist: true,
-              ifdone:true
-            })
-          } else {
-            that.setData({
-              choiceList: res.data,
-              nothing: true,
-              exist: false
-            })
-          }
-        }
-      })
-    }
   },
   formSubmit:function(e){
     var that = this;
+    let userId = ''
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        userId = res.data.id
+      },
+    })
     wx.showModal({
       content: '确认要提交吗?',
       success(res) {
         if (res.confirm) {
           wx.request({
-            url: 'http://localhost:8088/wrongs/insertSelective',
+            url: url+'/wrongs/insertSelective',
             data: {
               str: e.detail.value,
-              userId: '001',
+              userId: userId,
               examtime:that.examTime,
               bankId:that.bankId
             },
@@ -111,7 +126,7 @@ Page({
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
-        }
+        } 
       }
     })
   }

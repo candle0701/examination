@@ -1,4 +1,6 @@
 const util = require('../../utils/util.js')
+const url = require('../../utils/base.js').url
+
 // pages/about_us/index.js
 Page({
   /**
@@ -10,7 +12,12 @@ Page({
   },
   bindDateChange(e) {
     let that = this;
-    that.getWrongsList('001', e.detail.value)
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        that.getWrongsList(res.data.id, e.detail.value)
+      },
+    })
   },
   todetail:function(event){
     var data = (event.currentTarget.dataset)
@@ -21,7 +28,7 @@ Page({
   getWrongsList:function(userId,date){
     let that = this;
     wx.request({
-      url: 'http://localhost:8088/wrongs/getWrongsList',
+      url: url+'/wrongs/getWrongsList',
       data: {
         userId: userId,
         examtime:date
@@ -51,6 +58,12 @@ Page({
     this.setData({
       date: TIME
     });
-    that.getWrongsList('001','')
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        that.getWrongsList(res.data.id, '')
+      },
+    })
+    
   }
 })

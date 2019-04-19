@@ -1,3 +1,4 @@
+const url = require('../../../utils/base.js').url
 // pages/mine/aboutus/index.js
 Page({
 

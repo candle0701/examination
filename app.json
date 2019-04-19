@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/addinfo/index",
     "pages/index/index",
     "pages/mine/index",
     "pages/wrong/index",
