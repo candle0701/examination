@@ -1,6 +1,6 @@
 <view class="page">
   <view class='headName'>
-    <image class='head' src='../../img/wx.png'></image>
+    <image class='head' src='{{wximg}}'></image>
     <view class='name'>{{nickname}}</view>
   </view>
 

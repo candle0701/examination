@@ -1,0 +1,26 @@
+<form bindsubmit='register'>
+  <view class="login">
+    <text class="explain">请输入要注册的信息</text>
+    <view class="form_wap">
+      <view class="flex_wap input_wap">
+        <text class="label">账号</text>
+        <input value='' name="username" class='account_input' placeholder='请输入账号'></input>
+      </view>
+    </view>
+    <view class="form_wap">
+      <view class="flex_wap input_wap">
+        <text class="label">设置密码</text>
+        <input value='' id="password" name="password" maxlength='16' class='account_input' placeholder='最长输入16位' type='password'></input>
+      </view>
+    </view>
+    <view class="form_wap">
+      <view class="flex_wap input_wap">
+        <text class="label">确认密码</text>
+        <input value='' id="password" maxlength='16' name="passwordConfirm" class='account_input' placeholder='最长输入16位' type='password'></input>
+      </view>
+    </view>
+    <text wx:if="errInfo" class="errInfo">{{errInfo}}</text>
+    <text class="explain">请完整填写注册信息</text>
+    <button class="mysubmit" type="primary" form-type='submit'>注册</button>
+  </view>
+</form>

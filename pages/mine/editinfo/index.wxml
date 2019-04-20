@@ -16,7 +16,7 @@
       </label>
     </radio-group>
   </view>
-  <view class="city_area">
+  <!-- <view class="city_area">
     <view class="city__title">省市区:</view>
     <picker
       mode="region"
@@ -28,40 +28,22 @@
         {{region[0]}} {{region[1]}} {{region[2]}}
       </view>
     </picker>
-  </view>
+  </view> -->
   <view class="name_area">
-    <view class="name_title">街道:</view>
+    <view class="name_title">地址:</view>
     <input class="name_input" name="address" placeholder="请输入详细地址" value="{{userinfoList.address}}"/>
   </view>
   <view class="name_area">
     <view class="name_title">电话:</view>
     <input class="name_input" value="{{userinfoList.telephone}}" type="number" maxlength="11" name="telephone" placeholder="请输入手机号" />
   </view>
-  <view class="city_area">
-    <view class="city__title">年龄:</view>
-    <picker
-      bindchange="bindAgeChange"
-      value="{{userinfoList.ageIndex}}"
-      range='{{ageArr}}'
-      name='age'
-    >
-      <view class="age_picker">
-        {{ageArr[ageIndex]}}
-      </view>
-    </picker>
+  <view class="name_area">
+    <view class="name_title">年龄:</view>
+    <input class="name_input" value="{{userinfoList.telephone}}" type="number" maxlength="2" name="age" placeholder="请输入年龄" />
   </view>
-  <view class="city_area">
-    <view class="city__title">年级:</view>
-    <picker
-      bindchange="bindGradeChange"
-      value="{{userinfoList.gradeIndex}}"
-      range='{{gradeArr}}'
-      name='grade'    
-    >
-      <view class="grade_picker">
-        {{gradeArr[gradeIndex]}}
-      </view>
-    </picker>
+  <view class="name_area">
+    <view class="name_title">年级:</view>
+    <input class="name_input" value="{{userinfoList.telephone}}" type="number" maxlength="1" name="grade" placeholder="请输入年级" />
   </view>
   <view class="btn-area">
     <button form-type="submit" type="primary">提交</button>

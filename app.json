@@ -1,13 +1,14 @@
 {
   "pages":[
-    "pages/addinfo/index",
+    "pages/login/index",
     "pages/index/index",
     "pages/mine/index",
     "pages/wrong/index",
     "pages/wrong/wrongDetail/index",
     "pages/answer/index",
     "pages/mine/editinfo/index",
-    "pages/mine/aboutus/index"
+    "pages/mine/aboutus/index",
+    "pages/register/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

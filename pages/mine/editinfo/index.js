@@ -1,6 +1,4 @@
 const url = require('../../../utils/base.js').url
-const agesArr = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']
-const gradesArr = ['一', '二', '三', '四', '五', '六']
 // pages/mine/editinfo/index.js
 Page({
 
@@ -9,33 +7,19 @@ Page({
    */
   data: {
     userinfoList:[],
-    region: [],
-    ageArr: ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
-    gradeArr: ['一', '二', '三', '四', '五', '六'],
-    ageIndex:0,
-    gradeIndex:0
+    // region: []
   },
-  bindRegionChange(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
-  },
-  bindAgeChange(e) {
-    this.setData({
-      ageIndex: e.detail.value
-    })
-  },
-  bindGradeChange(e) {
-    this.setData({
-      gradeIndex: e.detail.value
-    })
-  },
+  // bindRegionChange(e) {
+  //   this.setData({
+  //     region: e.detail.value
+  //   })
+  // },
   formSubmit:function(e){
     var that = this;
     wx.getStorage({
       key: 'userinfo',
-      success: function (reso) {
+      success: function (reso) {  
+        console.info(reso)
         wx.showModal({
           content: '确认要提交吗?',
           success(res) {
@@ -45,25 +29,24 @@ Page({
                 data: {
                   nickname: e.detail.value.nickname,
                   address: e.detail.value.address,
-                  age: agesArr[e.detail.value.age],
-                  grade: gradesArr[e.detail.value.grade],
+                  age: e.detail.value.age,
+                  grade: e.detail.value.grade,
                   telephone: e.detail.value.telephone,
                   gender: e.detail.value.gender,
-                  province: e.detail.value.province_city_area[0],
-                  city: e.detail.value.province_city_area[1],
-                  area: e.detail.value.province_city_area[2],
-                  gradeIndex: e.detail.value.grade,
-                  ageIndex: e.detail.value.age,
-                  id: reso.data.id
+                  // province: e.detail.value.province_city_area[0] == '请选择' ? '' : e.detail.value.province_city_area[0],
+                  // city: e.detail.value.province_city_area[1] == undefined ? '' : e.detail.value.province_city_area[1],
+                  // area: e.detail.value.province_city_area[2] == undefined ? '' : e.detail.value.province_city_area[2],
+                  id: reso.data[0].id,
+                  img: reso.data[0].img
                 },
                 header: {
                   'content-type': 'application/json' // 默认值
                 },
                 success(res3) {
-                  console.info(res3.data)
+                  console.info(res3)
                   wx.setStorage({
                     key: 'userinfo',
-                    data: res3.data,
+                    data: res3.data.list,
                   })
                   wx.switchTab({
                     url: '/pages/mine/index',
@@ -88,10 +71,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      ageArr: agesArr,
-      gradeArr: gradesArr
-    })  
     let that = this;
     wx.getStorage({
       key: 'userinfo',
@@ -99,22 +78,17 @@ Page({
         wx.request({
           url: url + '/userinfo/selectByPrimaryKey',
           data: {
-            id: res.data.id
+            id: res.data[0].id
           },
           header: {
             'content-type': 'application/json' // 默认值
           },
           success(data) {
-            let regionArr = []
-            regionArr.push(data.data.province)
-            regionArr.push(data.data.city)
-            regionArr.push(data.data.area)
-              that.setData({
-                userinfoList: data.data,
-                ageIndex:data.data.ageIndex,
-                gradeIndex:data.data.gradeIndex,
-                region: regionArr
-              })
+            
+            that.setData({
+              userinfoList: data.data
+              // region: regionArr
+            })
           }
         })
       },
